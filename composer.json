@@ -1,0 +1,23 @@
+{
+    "name": "yourcompany/pos-system",
+    "description": "Point of Sale System with QR Code Integration",
+    "type": "project",
+    "require": {
+        "php": ">=7.4",
+        "ext-pdo": "*",
+        "ext-json": "*",
+        "ext-gd": "*",
+        "phpoffice/phpspreadsheet": "^5.5"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "POS\\": "classes/"
+        }
+    },
+    "scripts": {
+        "test": "phpunit tests"
+    }
+}

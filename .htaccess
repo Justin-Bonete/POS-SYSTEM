@@ -1,0 +1,40 @@
+# .htaccess for POS System
+Options -Indexes
+Options +FollowSymLinks
+
+# Enable Rewrite Engine
+RewriteEngine On
+
+# Security Headers
+Header set X-Content-Type-Options "nosniff"
+Header set X-Frame-Options "SAMEORIGIN"
+Header set X-XSS-Protection "1; mode=block"
+
+# Block access to sensitive directories
+RewriteRule ^(config|classes|includes|database|logs|\.git|\.agents)/ - [F,L]
+
+# Keep database dumps and local setup/maintenance files out of HTTP responses.
+<FilesMatch "(?i)\.(sql|env|log|ps1|bat)$">
+    Require all denied
+</FilesMatch>
+
+<FilesMatch "^(debug_product|fix_products_deleted_at|fix_sales_table|inventory_audit|query|run_complete|test_sale)\.php$">
+    Require all denied
+</FilesMatch>
+
+# Protect .env file
+<Files .env>
+    Order Allow,Deny
+    Deny from all
+</Files>
+
+# Custom error pages
+ErrorDocument 404 /pos-system/404.php
+ErrorDocument 403 /pos-system/403.php
+ErrorDocument 500 /pos-system/500.php
+
+# PHP Settings
+php_value upload_max_filesize 10M
+php_value post_max_size 10M
+php_value max_execution_time 300
+php_value max_input_time 300

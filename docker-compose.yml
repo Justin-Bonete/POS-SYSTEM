@@ -1,0 +1,40 @@
+version: '3.9'
+
+services:
+  app:
+    build: .
+    container_name: pos-system-app
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    volumes:
+      - .:/var/www/html/pos-system
+    environment:
+      DB_HOST: db
+      DB_NAME: pos_system
+      DB_USER: posuser
+      DB_PASS: pospass
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: mysql:8.0
+    container_name: pos-system-db
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: pos_system
+      MYSQL_USER: posuser
+      MYSQL_PASSWORD: pospass
+      MYSQL_ROOT_PASSWORD: rootpass
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -uroot -p$${MYSQL_ROOT_PASSWORD} --silent"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 10s
+
+volumes:
+  mysql_data:

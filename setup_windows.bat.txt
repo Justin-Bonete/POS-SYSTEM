@@ -1,0 +1,33 @@
+@echo off
+echo Setting up POS System files for Windows...
+cd /d C:\xampp\htdocs\pos-system
+
+echo Creating root files...
+if not exist .htaccess type nul > .htaccess
+if not exist .env type nul > .env
+if not exist composer.json type nul > composer.json
+if not exist package.json type nul > package.json
+if not exist README.md type nul > README.md
+if not exist robots.txt type nul > robots.txt
+
+echo Creating directories...
+if not exist database\migrations mkdir database\migrations
+if not exist logs mkdir logs
+if not exist tests mkdir tests
+if not exist docs mkdir docs
+
+echo Creating log files...
+if not exist logs\error.log type nul > logs\error.log
+if not exist logs\access.log type nul > logs\access.log
+
+echo.
+echo Directory structure created successfully!
+echo.
+echo Next steps:
+echo 1. Open these files in your text editor and add the content
+echo 2. Import database/schema.sql to MySQL
+echo 3. Update config/database.php with your credentials
+echo 4. Access the system at http://localhost/pos-system/
+echo.
+
+pause

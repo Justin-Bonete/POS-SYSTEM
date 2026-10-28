@@ -1,0 +1,168 @@
+/* assets/css/dashboard.css - Dashboard specific styles */
+
+/* Chart containers */
+.chart-container {
+    position: relative;
+    height: 300px;
+    width: 100%;
+    margin: 1rem 0;
+}
+
+/* Activity feed */
+.activity-feed {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.activity-item {
+    display: flex;
+    align-items: flex-start;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #e3e6f0;
+}
+
+.activity-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 0.75rem;
+    color: white;
+}
+
+.activity-icon.sale { background: var(--success-color); }
+.activity-icon.product { background: var(--primary-color); }
+.activity-icon.inventory { background: var(--warning-color); }
+
+.activity-content {
+    flex: 1;
+}
+
+.activity-title {
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.activity-time {
+    font-size: 0.875rem;
+    color: #b7b9cc;
+}
+
+/* Quick actions */
+.quick-actions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+}
+
+.quick-action-card {
+    background: white;
+    border: 1px solid #e3e6f0;
+    border-radius: 0.35rem;
+    padding: 1.5rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.quick-action-card:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: translateY(-2px);
+}
+
+.quick-action-icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Sales overview */
+.sales-overview {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.overview-card {
+    background: #f8f9fc;
+    padding: 1rem;
+    border-radius: 0.35rem;
+}
+
+.overview-label {
+    font-size: 0.875rem;
+    color: #b7b9cc;
+    margin-bottom: 0.25rem;
+}
+
+.overview-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #5a5c69;
+}
+
+/* Top products */
+.top-products {
+    margin-top: 1rem;
+}
+
+.top-product-item {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #e3e6f0;
+}
+
+.top-product-rank {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.875rem;
+    margin-right: 0.75rem;
+}
+
+.top-product-info {
+    flex: 1;
+}
+
+.top-product-name {
+    font-weight: 600;
+}
+
+.top-product-stats {
+    font-size: 0.875rem;
+    color: #b7b9cc;
+}
+
+.top-product-revenue {
+    font-weight: 600;
+    color: var(--success-color);
+}
+
+/* Inventory alerts */
+.inventory-alert-item {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #e3e6f0;
+}
+
+.inventory-alert-warning {
+    background: #fff3cd;
+    border-left: 4px solid var(--warning-color);
+    padding-left: 0.5rem;
+}
+
+.inventory-alert-danger {
+    background: #f8d7da;
+    border-left: 4px solid var(--danger-color);
+    padding-left: 0.5rem;
+}

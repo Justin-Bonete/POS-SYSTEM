@@ -1,0 +1,25 @@
+POS System installer for a different computer without XAMPP
+
+1. Copy the whole project folder to the target computer.
+2. Open PowerShell as Administrator.
+3. Run:
+   powershell -ExecutionPolicy Bypass -File .\installer\setup_windows_no_xampp.ps1
+4. If the app folder is elsewhere, update the script parameter:
+   -AppPath "C:\path\to\pos-system"
+   If you run the script from inside the project folder, it will detect the current folder automatically.
+5. The script will:
+   - check for PHP and MySQL runtime
+   - install missing tools using winget
+   - create the database
+   - write the config file
+   - create a launcher script
+6. Start the app with:
+   powershell -ExecutionPolicy Bypass -File ".\start-pos-system.ps1"
+7. Open the browser to:
+   http://localhost:8000/pos-system/
+8. Login with:
+   admin / admin123
+
+Note:
+This is still a PHP + MySQL app, so a runtime is still required.
+The difference is that the end user does not need to manually install XAMPP.
